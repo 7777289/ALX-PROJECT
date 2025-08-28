@@ -1,3 +1,13 @@
-from django.contrib import admin
+# from django.contrib import admin
+# from .models import Apartment
 
-# Register your models here.
+# admin.site.register(Apartment)
+
+from django.contrib import admin
+from .models import Apartment
+
+class ApartmentAdmin(admin.ModelAdmin):
+    list_display = ('title', 'location', 'price', 'owner')
+    list_filter = ('owner',) # This line adds the filter
+
+admin.site.register(Apartment, ApartmentAdmin)
